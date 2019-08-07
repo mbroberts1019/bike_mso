@@ -6,4 +6,4 @@ A flutter application that provides cycling routes and information for the Misso
 
 ### Home_screen
 
-![home page wireframe](/documentation/images/homepage_wireframe.png)
+![home page wireframe](https://github.com/mbroberts1019/bike_mso/blob/master/documentaion/images/homepage_wireframe.png)
