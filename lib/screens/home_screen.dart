@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
               flex: 3,
               child: Column(
                 children: <Widget>[
-                  Image.asset('assets/images/kimWilliamsBridgeClub.jpg'),
+                  Image.asset('assets/images/rattlesnakeBikePack.jpg'),
                   Text(
                     'Missoula\'s a great place to ride a bike, And we\'re here to help you find your way',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),

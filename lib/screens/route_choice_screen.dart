@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bike_mso/components/routeChoiceContainer.dart';
 
 class RideChoiceScreen extends StatelessWidget {
   @override
@@ -13,8 +14,11 @@ class RideChoiceScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
-              child: Center(
-                child: Text('Route 1'),
+              child: RouteChoiceContainer(
+                bgImageUrl: 'assets/images/kimWilliamsBridgeClub.jpg',
+                description:
+                    'A short dirt road ride along the Clark Fork east of town.',
+                routeName: 'Kickin\' it on the Kim',
               ),
             ),
             Expanded(
