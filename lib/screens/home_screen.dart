@@ -6,9 +6,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Go Ride Bikes!!'),
-      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -34,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                     iconText: 'Rides',
                     buttonIcon: Icon(
                       Icons.directions_bike,
-                      size: 40,
+                      size: 60,
                     ),
                     onPress: () {
                       Navigator.push(
@@ -48,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                     iconText: 'Weather',
                     buttonIcon: Icon(
                       Icons.cloud,
-                      size: 40,
+                      size: 60,
                     ),
                     onPress: () {},
                   ),
@@ -65,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                     iconText: 'Saftey 3rd',
                     buttonIcon: Icon(
                       Icons.local_hospital,
-                      size: 40,
+                      size: 60,
                     ),
                     onPress: () {},
                   ),
@@ -74,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                     iconText: 'Bike Shops',
                     buttonIcon: Icon(
                       Icons.build,
-                      size: 40,
+                      size: 60,
                     ),
                     onPress: () {},
                   ),
