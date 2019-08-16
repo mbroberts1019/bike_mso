@@ -7,19 +7,17 @@ class ListConverter {
 
   final List<PointLatLng> polyDecodedList;
 
-  PolylinePoints _polylinePoints = PolylinePoints();
-
   List<LatLng> polyCoordinates = [];
 
   List mapCoords() {
-    print(polyDecodedList);
+    //print(polyDecodedList);
 
-    var newSet =
+    var coordsMap =
         polyDecodedList.map((point) => LatLng(point.latitude, point.longitude));
 
-    polyCoordinates = newSet.toList();
+    polyCoordinates = coordsMap.toList();
 
-    print(polyCoordinates);
+    //print(polyCoordinates);
 
     return polyCoordinates;
   }
