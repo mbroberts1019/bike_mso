@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <meta-data android:name="com.google.android.geo.API_KEY"
-        android:value="<Api-Key>"/>
+        android:value="AIzaSyDE7RczlH-lLBeLiQAi3GeYvCSgyQEULmQ"/>
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="bike_mso"

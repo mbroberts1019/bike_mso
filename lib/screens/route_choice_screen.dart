@@ -33,17 +33,17 @@ class RideChoiceScreen extends StatelessWidget {
             ),
             Expanded(
               child: Center(
-                child: Text('Route 1'),
+                child: Text('Route 2'),
               ),
             ),
             Expanded(
               child: Center(
-                child: Text('Route 1'),
+                child: Text('Route 3'),
               ),
             ),
             Expanded(
               child: Center(
-                child: Text('Route 1'),
+                child: Text('Route 5'),
               ),
             ),
           ],
