@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bike_mso/components/routeChoiceContainer.dart';
+import 'package:bike_mso/components/map_display.dart';
 
 class RideChoiceScreen extends StatelessWidget {
   @override
@@ -15,6 +16,14 @@ class RideChoiceScreen extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: RouteChoiceContainer(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return MapDisplay();
+                    }),
+                  );
+                },
                 bgImageUrl: 'assets/images/kimWilliamsBridgeClub.jpg',
                 description:
                     'A short dirt road ride along the Clark Fork east of town.',
@@ -23,17 +32,17 @@ class RideChoiceScreen extends StatelessWidget {
             ),
             Expanded(
               child: Center(
-                child: Text('Route 1'),
+                child: Text('Route 2'),
               ),
             ),
             Expanded(
               child: Center(
-                child: Text('Route 1'),
+                child: Text('Route 3'),
               ),
             ),
             Expanded(
               child: Center(
-                child: Text('Route 1'),
+                child: Text('Route 5'),
               ),
             ),
           ],

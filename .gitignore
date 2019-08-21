@@ -1,3 +1,7 @@
+# Files with API Keys
+AndroidManifest.xml
+AppDelegate.swift
+
 # Miscellaneous
 *.class
 *.log
