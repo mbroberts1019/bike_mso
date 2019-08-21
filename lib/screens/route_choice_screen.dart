@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bike_mso/components/routeChoiceContainer.dart';
-import 'map_screen.dart';
-import 'mapScreenDemo.dart';
+import 'package:bike_mso/components/map_display.dart';
 
 class RideChoiceScreen extends StatelessWidget {
   @override
@@ -21,7 +20,7 @@ class RideChoiceScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) {
-                      return MapScreen();
+                      return MapDisplay();
                     }),
                   );
                 },

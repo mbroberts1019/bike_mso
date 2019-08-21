@@ -10,14 +10,10 @@ class ListConverter {
   List<LatLng> polyCoordinates = [];
 
   List mapCoords() {
-    //print(polyDecodedList);
-
     var coordsMap =
         polyDecodedList.map((point) => LatLng(point.latitude, point.longitude));
 
     polyCoordinates = coordsMap.toList();
-
-    //print(polyCoordinates);
 
     return polyCoordinates;
   }
