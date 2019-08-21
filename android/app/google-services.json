@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "659997572924",
+    "firebase_url": "https://bike-mso-1565921035103.firebaseio.com",
+    "project_id": "bike-mso-1565921035103",
+    "storage_bucket": "bike-mso-1565921035103.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659997572924:android:6470a9a0ecb6ae8b",
+        "android_client_info": {
+          "package_name": "mtcs.bike_mso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659997572924-n8u7fv3823glqp5qbp18ovrrhfbdqok1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxEGpLBg66YlL9DVXaoYuCN_MUNr0Wn1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659997572924-n8u7fv3823glqp5qbp18ovrrhfbdqok1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "659997572924-bamh511p3e5o6tamlnmi90jmn43bbp04.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mtcs.bikeMso"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
