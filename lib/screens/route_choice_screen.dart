@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bike_mso/components/routeChoiceContainer.dart';
-import 'package:bike_mso/components/map_display.dart';
+import 'package:bike_mso/constants/polylines.dart';
+import 'package:bike_mso/screens/route_screen.dart';
 
 class RideChoiceScreen extends StatelessWidget {
   @override
@@ -20,7 +21,10 @@ class RideChoiceScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) {
-                      return MapDisplay();
+                      return RouteScreen(
+                        kDeerCreekSneakPoly,
+                        'Kickin\' it on the Kim',
+                      );
                     }),
                   );
                 },
