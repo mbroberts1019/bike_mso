@@ -22,7 +22,7 @@ class RideChoiceScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) {
                       return RouteScreen(
-                        kDeerCreekSneakPoly,
+                        kKimWilliams,
                         'Kickin\' it on the Kim',
                       );
                     }),
@@ -35,13 +35,40 @@ class RideChoiceScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Center(
-                child: Text('Route 2'),
+              child: RouteChoiceContainer(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return RouteScreen(
+                        kLoloRide,
+                        'Missoula to Lolo',
+                      );
+                    }),
+                  );
+                },
+                bgImageUrl: 'assets/images/loloTrail.JPG',
+                description: 'A pleasant ride up the Bitterrot Trail.',
+                routeName: 'Missoula to Lolo ',
               ),
             ),
             Expanded(
-              child: Center(
-                child: Text('Route 3'),
+              child: RouteChoiceContainer(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return RouteScreen(
+                        kDeerCreekSneakPoly,
+                        'Deer Creek Sneak',
+                      );
+                    }),
+                  );
+                },
+                bgImageUrl: 'assets/images/deerCreekT29.jpg',
+                description:
+                    'A half dirt road half single track loop around the back side of Mt. Sentinal.',
+                routeName: 'Deer Creek Sneak',
               ),
             ),
             Expanded(

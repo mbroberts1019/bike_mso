@@ -107,7 +107,7 @@ class _RouteScreenState extends State<RouteScreen> {
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                'Description',
+                                'Directions',
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
