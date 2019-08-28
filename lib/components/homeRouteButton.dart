@@ -17,8 +17,8 @@ class ReusableButton extends StatelessWidget {
         children: <Widget>[
           Container(
             child: buttonIcon,
-            height: 90,
-            width: 90,
+            height: 80,
+            width: 80,
             margin: EdgeInsets.all(15.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),

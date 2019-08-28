@@ -13,7 +13,10 @@ class HomeScreen extends StatelessWidget {
               flex: 3,
               child: Column(
                 children: <Widget>[
-                  Image.asset('assets/images/rattlesnakeBikePack.jpg'),
+                  Image.asset(
+                    'assets/images/rattlesnakeBikePack.jpg',
+                    fit: BoxFit.fill,
+                  ),
                   Text(
                     'Missoula\'s a great place to ride a bike, And we\'re here to help you find your way',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
@@ -31,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                     iconText: 'Rides',
                     buttonIcon: Icon(
                       Icons.directions_bike,
-                      size: 60,
+                      size: 50,
                     ),
                     onPress: () {
                       Navigator.push(
@@ -45,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                     iconText: 'Weather',
                     buttonIcon: Icon(
                       Icons.cloud,
-                      size: 60,
+                      size: 50,
                     ),
                     onPress: () {},
                   ),
@@ -62,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                     iconText: 'Saftey 3rd',
                     buttonIcon: Icon(
                       Icons.local_hospital,
-                      size: 60,
+                      size: 50,
                     ),
                     onPress: () {},
                   ),
@@ -71,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                     iconText: 'Bike Shops',
                     buttonIcon: Icon(
                       Icons.build,
-                      size: 60,
+                      size: 50,
                     ),
                     onPress: () {},
                   ),
