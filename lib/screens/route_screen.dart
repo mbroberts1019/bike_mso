@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:bike_mso/components/map_display.dart';
+import 'package:bike_mso/components/infoWidget.dart';
 
 class RouteScreen extends StatefulWidget {
   RouteScreen(this.encodedString, this.routeTitle);
@@ -50,116 +51,74 @@ class _RouteScreenState extends State<RouteScreen> {
                   Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.deepPurpleAccent,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black54,
-                              offset: Offset(4.0, 4.0),
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.deepPurple,
-                            width: 8.0,
-                          ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.deepPurpleAccent,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black54,
+                            offset: Offset(4.0, 4.0),
+                          )
+                        ],
+                        border: Border.all(
+                          color: Colors.deepPurple,
+                          width: 8.0,
                         ),
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                'Description',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ],
-                        )),
+                      ),
+                      child: InfoWidget(
+                        title: 'Description',
+                        body:
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.lightBlueAccent,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black54,
-                              offset: Offset(4.0, 4.0),
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.blue,
-                            width: 8.0,
-                          ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.lightBlueAccent,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black54,
+                            offset: Offset(4.0, 4.0),
+                          )
+                        ],
+                        border: Border.all(
+                          color: Colors.blue,
+                          width: 8.0,
                         ),
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                'Directions',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ],
-                        )),
+                      ),
+                      child: InfoWidget(
+                        title: 'Directions',
+                        body:
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.orange,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black54,
-                              offset: Offset(4.0, 4.0),
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.deepOrangeAccent,
-                            width: 8.0,
-                          ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.orange,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black54,
+                            offset: Offset(4.0, 4.0),
+                          )
+                        ],
+                        border: Border.all(
+                          color: Colors.deepOrangeAccent,
+                          width: 8.0,
                         ),
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                'Attractions',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ],
-                        )),
+                      ),
+                      child: InfoWidget(
+                        title: 'Attractions',
+                        body:
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                      ),
+                    ),
                   ),
                 ],
               ),
