@@ -21,6 +21,7 @@ dependencies:
   firebase_core: ^0.4.0+8
   firebase_auth: ^0.14.0+2
   cloud_firestore: ^0.12.9
+  expandable: ^3.0.0+1
 
 
 dev_dependencies:
@@ -36,28 +37,30 @@ flutter:
 
   assets:
     - assets/images/
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
 
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Lora
+      fonts:
+        - asset: fonts/Lora-Regular.ttf
+        - asset: fonts/Lora-RegularItalic.ttf
+        - asset: fonts/Lora-Bold.ttf
+        - asset: fonts/Lora-BoldItalic.ttf
+          style: italic
+
+    - family: Merriweather
+      fonts:
+        - asset: fonts/Merriweather-Regular.ttf
+        - asset: fonts/Merriweather-RegularItalic.ttf
+        - asset: fonts/Merriweather-Bold.ttf
+        - asset: fonts/Merriweather-BoldItalic.ttf
+          style: italic
+    - family: RobotoMono
+      fonts:
+        - asset: fonts/RobotoMono-Regular.ttf
+        - asset: fonts/RobotoMono-RegularItalic.ttf
+        - asset: fonts/RobotoMono-Bold.ttf
+        - asset: fonts/RobotoMono-BoldItalic.ttf
+          style: italic
+
+

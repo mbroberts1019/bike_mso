@@ -23,6 +23,12 @@ class ReusableButton extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               color: color,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black54,
+                  offset: Offset(4.0, 4.0),
+                ),
+              ],
             ),
           ),
           Text(
