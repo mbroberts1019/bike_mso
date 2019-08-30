@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bike_mso/components/homeRouteButton.dart';
 import 'route_choice_screen.dart';
+import 'safety_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -131,9 +132,10 @@ class _HomeScreenState extends State<HomeScreen>
                         ),
                         onPress: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => RideChoiceScreen()));
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RideChoiceScreen()),
+                          );
                         },
                       ),
                       ReusableButton(
@@ -162,7 +164,13 @@ class _HomeScreenState extends State<HomeScreen>
                         Icons.local_hospital,
                         size: 50,
                       ),
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SafetyScreen()),
+                        );
+                      },
                     ),
                     ReusableButton(
                       color: Colors.purpleAccent,
