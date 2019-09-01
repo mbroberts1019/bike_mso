@@ -40,74 +40,33 @@ class _RideChoiceScreenState extends State<RideChoiceScreen> {
             stream: Firestore.instance.collection('routes').snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              print(snapshot);
-
-              return ListView(
-                children:
-                    snapshot.data.documents.map((DocumentSnapshot document) {
-                  return RouteChoiceContainer(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return RouteScreen(
-                            document['polyline'],
-                            document['routeName'],
-                          );
-                        }),
-                      );
-                    },
-                    bgImageUrl: 'assets/images/' + document['image'],
-                    description: document['description'],
-                    routeName: document['routeName'],
-                  );
-                }).toList(),
-              );
+              if (snapshot.connectionState == ConnectionState.waiting)
+                return new Center(child: CircularProgressIndicator());
+              if (snapshot.hasData) {
+                return ListView(
+                  children:
+                      snapshot.data.documents.map((DocumentSnapshot document) {
+                    return RouteChoiceContainer(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return RouteScreen(
+                              document['polyline'].toString(),
+                              document['routeName'],
+                            );
+                          }),
+                        );
+                      },
+                      bgImageUrl: 'assets/images/' + document['image'],
+                      description: document['description'],
+                      routeName: document['routeName'],
+                    );
+                  }).toList(),
+                );
+              }
             }),
       ),
     );
   }
 }
-
-//class RideChoiceScreen extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      appBar: AppBar(
-//        title: Text('Go Ride Bikes!!'),
-//      ),
-//      body: Container(
-//        child: Column(
-//          mainAxisAlignment: MainAxisAlignment.center,
-//          crossAxisAlignment: CrossAxisAlignment.stretch,
-//          children: <Widget>[
-//            Expanded(
-//              child: RouteChoiceContainer(
-//                onPressed: () {
-//                  Navigator.push(
-//                    context,
-//                    MaterialPageRoute(builder: (context) {
-//                      return RouteScreen(
-//                        kKimWilliams,
-//                        'Kickin\' it on the Kim',
-//                      );
-//                    }),
-//                  );
-//                },
-//                bgImageUrl: 'assets/images/kimWilliamsBridgeClub.jpg',
-//                description:
-//                    'A short dirt road ride along the Clark Fork east of town.',
-//                routeName: 'Kickin\' it on the Kim',
-//              ),
-//            ),
-//            Expanded(
-//              child: Center(
-//                child: Text('Route 5'),
-//              ),
-//            ),
-//          ],
-//        ),
-//      ),
-//    );
-//  }
-//}

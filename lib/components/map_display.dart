@@ -11,7 +11,7 @@ NetworkUtil util = NetworkUtil();
 class MapDisplay extends StatefulWidget {
   MapDisplay(this.encodedString);
 
-  final String encodedString;
+  final dynamic encodedString;
 
   @override
   _MapDisplayState createState() => _MapDisplayState();
@@ -44,6 +44,7 @@ class _MapDisplayState extends State<MapDisplay> {
     List<PointLatLng> pLineList =
         util.decodeEncodedPolyline(widget.encodedString);
     ListConverter converter = ListConverter(pLineList);
+    //print(pLineList);
     thisRide = converter.mapCoords();
   }
 

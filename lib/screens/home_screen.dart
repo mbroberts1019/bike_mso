@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bike_mso/components/homeRouteButton.dart';
 import 'route_choice_screen.dart';
 import 'safety_screen.dart';
+import 'bikeShop_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -179,7 +180,14 @@ class _HomeScreenState extends State<HomeScreen>
                         Icons.build,
                         size: 50,
                       ),
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BikeShopScreen(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
