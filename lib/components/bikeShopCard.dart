@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:bike_mso/constants/bikeShopData.dart';
 
 class BikeShopCard extends StatelessWidget {
-  BikeShopCard(this.shopName, this.shopTagLine, this.imgName, this.shopUrl,
-      this.doRent, this.doRepairs, this.sellBikes, this.fourStars);
+  final BikeShop shop;
 
-  final String shopName;
-  final String shopTagLine;
-  final String imgName;
-  final String shopUrl;
-  final bool doRent;
-  final bool doRepairs;
-  final bool sellBikes;
-  final bool fourStars;
+  BikeShopCard(this.shop);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +15,10 @@ class BikeShopCard extends StatelessWidget {
         height: 250,
         decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/$imgName"),
+              image: AssetImage("assets/images/" + shop.imgName),
               fit: BoxFit.cover,
             ),
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(8.0),
             border: Border.all(
               color: Colors.blueGrey,
               width: 3.0,
@@ -47,9 +40,9 @@ class BikeShopCard extends StatelessWidget {
                     color: Colors.white,
                   ),
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8.0),
+                    padding: EdgeInsets.only(top: 5, left: 8.0),
                     child: Text(
-                      shopName,
+                      shop.shopName,
                       style: TextStyle(fontSize: 25.0, color: Colors.black),
                     ),
                   ),
@@ -57,50 +50,61 @@ class BikeShopCard extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(color: Colors.white),
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8.0),
+                    padding: EdgeInsets.only(top: 5, left: 8.0),
                     child: Text(
-                      shopTagLine,
+                      shop.shopTagLine,
                       style: TextStyle(fontSize: 16.0, color: Colors.black),
                     ),
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(color: Colors.white),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(5.0),
+                      bottomLeft: Radius.circular(5.0),
+                    ),
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(left: 8, right: 10),
+                        padding: EdgeInsets.only(top: 5, left: 8, right: 10),
                         child: Column(
                           children: <Widget>[
                             Icon(Icons.directions_bike,
                                 size: 25.0,
-                                color: doRent ? Colors.black : Colors.black26),
+                                color: shop.doRent
+                                    ? Colors.black
+                                    : Colors.black26),
                             Text(
                               'Rent',
                               style: TextStyle(
                                 fontSize: 10,
-                                color: doRent ? Colors.black : Colors.black26,
+                                color:
+                                    shop.doRent ? Colors.black : Colors.black26,
                               ),
                             ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: EdgeInsets.only(top: 5, left: 10, right: 10),
                         child: Column(
                           children: <Widget>[
                             Icon(Icons.build,
                                 size: 25.0,
-                                color:
-                                    doRepairs ? Colors.black : Colors.black26),
+                                color: shop.doRepairs
+                                    ? Colors.black
+                                    : Colors.black26),
                             Center(
                               child: Text(
                                 'Service',
                                 style: TextStyle(
                                   fontSize: 10,
-                                  color:
-                                      doRepairs ? Colors.black : Colors.black26,
+                                  color: shop.doRepairs
+                                      ? Colors.black
+                                      : Colors.black26,
                                 ),
                               ),
                             ),
@@ -108,20 +112,22 @@ class BikeShopCard extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: EdgeInsets.only(top: 5, left: 10, right: 10),
                         child: Column(
                           children: <Widget>[
                             Icon(Icons.attach_money,
                                 size: 25.0,
-                                color:
-                                    sellBikes ? Colors.black : Colors.black26),
+                                color: shop.sellBikes
+                                    ? Colors.black
+                                    : Colors.black26),
                             Center(
                               child: Text(
                                 'Sales',
                                 style: TextStyle(
                                   fontSize: 10,
-                                  color:
-                                      sellBikes ? Colors.black : Colors.black26,
+                                  color: shop.sellBikes
+                                      ? Colors.black
+                                      : Colors.black26,
                                 ),
                               ),
                             ),
@@ -129,20 +135,22 @@ class BikeShopCard extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 10, right: 5),
+                        padding: EdgeInsets.only(top: 5, left: 10, right: 5),
                         child: Column(
                           children: <Widget>[
                             Icon(Icons.insert_emoticon,
                                 size: 25.0,
-                                color:
-                                    fourStars ? Colors.black : Colors.black26),
+                                color: shop.fourStars
+                                    ? Colors.black
+                                    : Colors.black26),
                             Center(
                               child: Text(
                                 'Four Stars',
                                 style: TextStyle(
                                   fontSize: 10,
-                                  color:
-                                      fourStars ? Colors.black : Colors.black26,
+                                  color: shop.fourStars
+                                      ? Colors.black
+                                      : Colors.black26,
                                 ),
                               ),
                             ),
@@ -155,21 +163,14 @@ class BikeShopCard extends StatelessWidget {
               ],
             ),
             Positioned(
-              bottom: 10,
-              right: 20,
-              child: Container(
-                height: 70,
-                width: 120,
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                ),
-                child: FlatButton(
-                  onPressed: () {
-                    print('Cliked');
-                    _launchURL(shopUrl);
-                  },
-                  child: Text('Go to Google'),
-                ),
+              bottom: 0,
+              right: 0,
+              child: FlatButton(
+                onPressed: () {
+                  print('Cliked');
+                  _launchURL(shop.shopUrl);
+                },
+                child: Icon(Icons.help_outline, size: 30, color: Colors.black),
               ),
             ),
           ],
