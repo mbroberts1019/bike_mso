@@ -45,6 +45,7 @@ class _BikeShopScreenState extends State<BikeShopScreen> {
     }
     // sort list based on distance
     bikeShopList.sort((a, b) => a.distance.compareTo(b.distance));
+    setState(() {});
   }
 
   Widget _buildShopList(BuildContext context, int index) {
