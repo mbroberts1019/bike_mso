@@ -9,29 +9,33 @@ final kBicycleHangar = new BikeShop(
   true,
   true,
   true,
+  46.853907,
+  -114.0108293,
 );
 
 final kBicycleHangarDowntown = new BikeShop(
-  'Bicycle Hangar- Downtown',
-  'Free Tuneups for Life',
-  'bikeHanagarDT.png',
-  'www.google.com/maps/place/Bicycle+Hangar+Downtown/@46.8637082,-114.0192536,14z/data=!4m8!1m2!2m1!1sgoogle+maps+bicycle+Hangar!3m4!1s0x535dcc2b056ffea3:0xeae80f03e9fadc00!8m2!3d46.8735121!4d-113.9926586',
-  true,
-  true,
-  true,
-  true,
-);
+    'Bicycle Hangar- Downtown',
+    'Free Tuneups for Life',
+    'bikeHanagarDT.png',
+    'www.google.com/maps/place/Bicycle+Hangar+Downtown/@46.8637082,-114.0192536,14z/data=!4m8!1m2!2m1!1sgoogle+maps+bicycle+Hangar!3m4!1s0x535dcc2b056ffea3:0xeae80f03e9fadc00!8m2!3d46.8735121!4d-113.9926586',
+    true,
+    true,
+    true,
+    true,
+    46.8735121,
+    -113.9926586);
 
 final kBigSkyBikes = new BikeShop(
-  'Big Sky Bikes',
-  'Your Premier Missoula Bike Shop',
-  'bigSkyBikes.png',
-  'www.google.com/maps/place/Big+Sky+Bikes/@46.867985,-113.9862867,17z/data=!3m1!4b1!4m5!3m4!1s0x535dcc2e5011984f:0x382ca0d14bfd3906!8m2!3d46.867985!4d-113.984098',
-  false,
-  true,
-  true,
-  false,
-);
+    'Big Sky Bikes',
+    'Your Premier Missoula Bike Shop',
+    'bigSkyBikes.png',
+    'www.google.com/maps/place/Big+Sky+Bikes/@46.867985,-113.9862867,17z/data=!3m1!4b1!4m5!3m4!1s0x535dcc2e5011984f:0x382ca0d14bfd3906!8m2!3d46.867985!4d-113.984098',
+    false,
+    true,
+    true,
+    false,
+    46.867985,
+    -113.984098);
 
 final kBikeDoctor = new BikeShop(
   'Bike Doctor',
@@ -42,6 +46,8 @@ final kBikeDoctor = new BikeShop(
   true,
   true,
   true,
+  46.8778278,
+  -114.006712,
 );
 
 final kFreeCycles = new BikeShop(
@@ -53,6 +59,8 @@ final kFreeCycles = new BikeShop(
   true,
   false,
   true,
+  46.8691476,
+  -114.0076172,
 );
 
 final kHellgateCyclery = new BikeShop(
@@ -64,6 +72,8 @@ final kHellgateCyclery = new BikeShop(
   true,
   true,
   true,
+  46.8724325,
+  -113.9932557,
 );
 
 final kMissoulaBikeSource = new BikeShop(
@@ -75,6 +85,8 @@ final kMissoulaBikeSource = new BikeShop(
   true,
   true,
   true,
+  46.8575458,
+  -114.0192025,
 );
 
 final kMissoulaBikeWorks = new BikeShop(
@@ -86,6 +98,8 @@ final kMissoulaBikeWorks = new BikeShop(
   true,
   true,
   true,
+  46.8645575,
+  -113.9972964,
 );
 
 final kOpenRoadBicycles = new BikeShop(
@@ -97,11 +111,23 @@ final kOpenRoadBicycles = new BikeShop(
   true,
   true,
   true,
+  46.8665734,
+  -114.003813,
 );
 
 class BikeShop {
-  BikeShop(this.shopName, this.shopTagLine, this.imgName, this.shopUrl,
-      this.doRent, this.doRepairs, this.sellBikes, this.fourStars);
+  BikeShop(
+    this.shopName,
+    this.shopTagLine,
+    this.imgName,
+    this.shopUrl,
+    this.doRent,
+    this.doRepairs,
+    this.sellBikes,
+    this.fourStars,
+    this.lat,
+    this.long,
+  );
 
   final String shopName;
   final String shopTagLine;
@@ -111,4 +137,7 @@ class BikeShop {
   final bool doRepairs;
   final bool sellBikes;
   final bool fourStars;
+  final double lat;
+  final double long;
+  var distance;
 }

@@ -12,7 +12,7 @@ class BikeShopCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: Container(
-        height: 250,
+        height: 275,
         decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/" + shop.imgName),
@@ -80,7 +80,7 @@ class BikeShopCard extends StatelessWidget {
                             Text(
                               'Rent',
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 12,
                                 color:
                                     shop.doRent ? Colors.black : Colors.black26,
                               ),
@@ -101,7 +101,7 @@ class BikeShopCard extends StatelessWidget {
                               child: Text(
                                 'Service',
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 12,
                                   color: shop.doRepairs
                                       ? Colors.black
                                       : Colors.black26,
@@ -124,7 +124,7 @@ class BikeShopCard extends StatelessWidget {
                               child: Text(
                                 'Sales',
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 12,
                                   color: shop.sellBikes
                                       ? Colors.black
                                       : Colors.black26,
@@ -145,9 +145,9 @@ class BikeShopCard extends StatelessWidget {
                                     : Colors.black26),
                             Center(
                               child: Text(
-                                'Four Stars',
+                                'Reviews',
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 12,
                                   color: shop.fourStars
                                       ? Colors.black
                                       : Colors.black26,
@@ -157,6 +157,31 @@ class BikeShopCard extends StatelessWidget {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 5, left: 10, right: 5),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: 25,
+                              child: Text(
+                                shop.distance.toString(),
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'Miles',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -173,6 +198,26 @@ class BikeShopCard extends StatelessWidget {
                 child: Icon(Icons.help_outline, size: 30, color: Colors.black),
               ),
             ),
+//            Positioned(
+//              top: 5,
+//              right: 5,
+//              child: Container(
+//                  decoration: BoxDecoration(
+//                      color: Colors.black54,
+//                      borderRadius: BorderRadius.circular(3.0),
+//                      border: Border.all(
+//                        color: Colors.black,
+//                      )),
+//                  child: Padding(
+//                    padding: EdgeInsets.all(3.0),
+//                    child: Text(shop.distance.toString() + ' mi',
+//                        style: TextStyle(
+//                          color: Colors.white,
+//                          fontWeight: FontWeight.bold,
+//                          fontSize: 16.0,
+//                        )),
+//                  )),
+//            ),
           ],
         ),
       ),
