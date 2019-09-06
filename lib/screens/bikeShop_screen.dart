@@ -33,14 +33,14 @@ class _BikeShopScreenState extends State<BikeShopScreen> {
     Location location = new Location();
 
     await location.getCurrentLocation();
-    //use Haversine to calculate and set distances for each shop
+    //use Haversine to calculate distance for each shop
     for (BikeShop shop in bikeShopList) {
       final haversine = new Haversine.fromDegrees(
           latitude1: location.latitude,
           latitude2: shop.lat,
           longitude1: location.longitude,
           longitude2: shop.long);
-      // converting meters to miles & making a string with 2 decimal places
+      // converting meters to miles & set as string with 2 decimal places
       shop.distance = (haversine.distance() * 0.000621371).toStringAsFixed(2);
     }
     // sort list based on distance

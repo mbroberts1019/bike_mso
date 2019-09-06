@@ -6,23 +6,24 @@ import 'package:bike_mso/components/map_display.dart';
 import 'package:bike_mso/components/infoWidget.dart';
 
 class RouteScreen extends StatefulWidget {
-  RouteScreen(this.encodedString, this.routeTitle);
+  RouteScreen(this.route);
 
-  final String encodedString;
-  final String routeTitle;
+  final RouteDocument route;
 
   @override
   _RouteScreenState createState() => _RouteScreenState();
 }
 
 class _RouteScreenState extends State<RouteScreen> {
+  RouteDocument route;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.routeTitle),
+        title: Text(widget.route.routeName),
       ),
       body: SafeArea(
         child: Column(
@@ -38,7 +39,7 @@ class _RouteScreenState extends State<RouteScreen> {
                       width: 3.0,
                     )),
                 height: height * 0.35,
-                child: MapDisplay(widget.encodedString),
+                child: MapDisplay(widget.route.encodedString),
               ),
             ),
             Container(
@@ -67,8 +68,7 @@ class _RouteScreenState extends State<RouteScreen> {
                       ),
                       child: InfoWidget(
                         title: 'Description',
-                        body:
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                        body: widget.route.description,
                       ),
                     ),
                   ),
@@ -128,4 +128,26 @@ class _RouteScreenState extends State<RouteScreen> {
       ),
     );
   }
+}
+
+// class being passed to MapScreen that holds all key/values from database
+
+class RouteDocument {
+  RouteDocument(
+    this.description,
+    this.directions,
+    this.image,
+    this.markers,
+    this.encodedString,
+    this.routeName,
+    this.shortDescription,
+  );
+
+  dynamic description;
+  dynamic directions;
+  dynamic image;
+  dynamic markers;
+  dynamic encodedString;
+  dynamic routeName;
+  dynamic shortDescription;
 }

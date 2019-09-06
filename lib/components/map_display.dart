@@ -12,6 +12,7 @@ class MapDisplay extends StatefulWidget {
   MapDisplay(this.encodedString);
 
   final dynamic encodedString;
+  dynamic markers;
 
   @override
   _MapDisplayState createState() => _MapDisplayState();
