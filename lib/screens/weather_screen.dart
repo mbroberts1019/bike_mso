@@ -1,18 +1,28 @@
+import 'package:bike_mso/services/openweather_provider.dart';
 import 'package:bike_mso/services/weather_interface.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:bike_mso/services/fake_provider.dart';
 
 class WeatherScreenState extends StatefulWidget {
-  final WeatherInterface weather = FakeProvider();
+  final WeatherInterface weather = OpenWeatherProvider();
 
   @override
   _WeatherScreenStateState createState() => _WeatherScreenStateState();
 }
 
 class _WeatherScreenStateState extends State<WeatherScreenState> {
+  @override
+  void initState() {
+    );
+
+
+
+    super.initState();
+  }
+
   Widget buildRow(List<bool> daiyOverView) {
     Icon morning;
+
     if (daiyOverView[0]) {
       morning = Icon(Icons.thumb_up);
     } else {
@@ -20,6 +30,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
     }
 
     Icon afterNoon;
+
     if (daiyOverView[1]) {
       afterNoon = Icon(Icons.thumb_up);
     } else {
@@ -27,6 +38,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
     }
 
     Icon evening;
+
     if (daiyOverView[2]) {
       evening = Icon(Icons.thumb_up);
     } else {
