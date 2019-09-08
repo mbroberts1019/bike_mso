@@ -5,6 +5,9 @@ import 'package:bike_mso/services/fake_provider.dart';
 
 class WeatherScreenState extends StatefulWidget {
   final WeatherInterface weather = OpenWeatherProvider();
+  int temperature;
+  String weatherIcon;
+
 
   @override
   _WeatherScreenStateState createState() => _WeatherScreenStateState();
