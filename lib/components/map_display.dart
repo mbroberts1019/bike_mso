@@ -27,7 +27,6 @@ class _MapDisplayState extends State<MapDisplay> {
   Set<Marker> _markers = {};
 
   void _onMapCreated(GoogleMapController controller) {
-    print(widget.markers[0]['position']['latitude']);
     setState(
       () {
         mapController = controller;
