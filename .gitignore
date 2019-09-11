@@ -1,6 +1,8 @@
 # Files with API Keys
 AndroidManifest.xml
 AppDelegate.swift
+keys.dart
+
 
 # Miscellaneous
 *.class

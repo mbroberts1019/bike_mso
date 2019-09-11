@@ -39,7 +39,8 @@ class _RouteScreenState extends State<RouteScreen> {
                       width: 3.0,
                     )),
                 height: height * 0.35,
-                child: MapDisplay(widget.route.encodedString),
+                child: MapDisplay(
+                    widget.route.encodedString, widget.route.markers),
               ),
             ),
             Container(
