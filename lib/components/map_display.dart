@@ -40,8 +40,8 @@ class _MapDisplayState extends State<MapDisplay> {
         ));
       },
     );
-
-    if (widget.markers.length > 0) {
+    //check to see if markers exist, also check to make sure that marker array contains data
+    if (widget.markers.length > 0 && widget.markers[0] != '') {
       for (dynamic marker in widget.markers) {
         _markers.add(
           Marker(
