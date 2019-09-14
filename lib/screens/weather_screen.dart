@@ -1,99 +1,83 @@
 import 'package:bike_mso/services/openweather_provider.dart';
 import 'package:bike_mso/services/weather_interface.dart';
 import 'package:flutter/material.dart';
+import 'package:bike_mso/components/weather_card.dart';
 import 'package:bike_mso/services/fake_provider.dart';
 
 class WeatherScreenState extends StatefulWidget {
-  final WeatherInterface weather = OpenWeatherProvider();
-  int temperature;
-  String weatherIcon;
-
+  final weather = OpenWeatherProvider();
+  List<bool> daysWeather;
 
   @override
   _WeatherScreenStateState createState() => _WeatherScreenStateState();
 }
 
 class _WeatherScreenStateState extends State<WeatherScreenState> {
-  @override
-  void initState() {
-    );
-
-
-
-    super.initState();
-  }
-
   Widget buildRow(List<bool> daiyOverView) {
-    Icon morning;
-
+    String morning;
     if (daiyOverView[0]) {
-      morning = Icon(Icons.thumb_up);
+      morning = 'thumb_up';
     } else {
-      morning = Icon(Icons.thumb_down);
+      morning = 'thumb_down';
     }
 
-    Icon afterNoon;
-
+    String afterNoon;
     if (daiyOverView[1]) {
-      afterNoon = Icon(Icons.thumb_up);
+      afterNoon = 'thumb_up';
     } else {
-      afterNoon = Icon(Icons.thumb_down);
+      afterNoon = 'thumb_down';
     }
 
-    Icon evening;
-
+    String evening;
     if (daiyOverView[2]) {
-      evening = Icon(Icons.thumb_up);
+      evening = 'thumb_up';
     } else {
-      evening = Icon(Icons.thumb_down);
+      evening = 'thumb_down';
     }
 
     return Container(
       padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(
-            child: morning,
-            height: 90,
-            width: 90,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(18)),
-              color: Colors.red,
-            ),
+          WeatherCard(
+            timeOfDay: morning,
           ),
-          Container(
-            child: afterNoon,
-            height: 90,
-            width: 90,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(18)),
-              color: Colors.yellow,
-            ),
+          WeatherCard(
+            timeOfDay: afterNoon,
           ),
-          Container(
-            child: evening,
-            height: 90,
-            width: 90,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(18)),
-              color: Colors.green,
-            ),
+          WeatherCard(
+            timeOfDay: evening,
           ),
         ],
       ),
     );
   }
 
+  Future<List<bool>> getWeather() async {
+    return await widget.weather.getFiveDays();
+  }
+
   @override
   Widget build(BuildContext context) {
+    getWeather();
     return Scaffold(
       appBar: AppBar(
         title: Text('Up Coming Biking Weather'),
       ),
-      body: ListView(
-          //padding: EdgeInsets.all(15.0),
-          children: widget.weather.getFiveDays().map(buildRow).toList()),
+      body: FutureBuilder(
+        future: getWeather(),
+        builder: (BuildContext context, AsyncSnapshot<List<bool>> snapshot) {
+          if (snapshot.hasData) {
+            {
+              return buildRow(snapshot.data);
+            }
+          } else {
+            return buildRow([false, false, false]);
+          }
+        },
+      ),
     );
   }
 }

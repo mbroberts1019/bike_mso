@@ -3,66 +3,117 @@ import 'package:bike_mso/services/weather_interface.dart';
 import 'package:http/http.dart' as http;
 import 'package:bike_mso/constants/keys.dart';
 import 'package:bike_mso/constants/constweather.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 const apikey = kOpenweatherkey;
 
-class OpenWeatherProvider implements WeatherInterface {
+class OpenWeatherProvider {
   final String url = '$openWeatherMapURL?id=524901&APPID=$apikey&zip=59801';
+
+  //create weather doc 1.2.3
+
+  var currentTemp;
+  var tempUpdate1;
+  var tempUpdate2;
+  var tempUpdate3;
+
+  var currentHour;
+  var threeHourUpdate;
+  var sixHourUpdate;
+
+  bool firstbool;
+  bool secondbool;
+  bool thirdbool;
 
   Future getData() async {
     http.Response responseData = await http.get(url);
 
     if (responseData.statusCode == 200) {
-      dynamic data = responseData.body;
-      //print(data);
+      String data = responseData.body;
       return data;
     } else {
       print(responseData.statusCode);
     }
   }
 
-//
-  //Future<List> decodedData(String jsonData) async {
-//    var parsedJson = await jsonDecode(jsonData);
-//    //print(parsedJson);
-//    return parsedJson;
-//  }
-
   Future<dynamic> loadData() async {
     var data = await getData();
     var parsedJson = jsonDecode(data);
-    //double temperature = parsedJson['list'][0]['main']['temp'];
-    //print(temperature);
-    print('hit loadData');
-    print(parsedJson);
+    final items = (parsedJson['list'] as List)
+        .map((i) => new WeatherDocument.fromJson(i));
+    for (final item in items) {
+      print(item);
+    }
+
+//    List<WeatherDocument> weatherDocuments =
+//        parsedJson['list'].map((Map model) => WeatherDocument.fromJson(model));
+
+    //print(weatherDocuments);
+    //print('running');
+
+    currentTemp = parsedJson['list'][0]['main']['temp'];
+    tempUpdate1 = parsedJson['list'][1]['main']['temp'];
+    tempUpdate2 = parsedJson['list'][2]['main']['temp'];
+    tempUpdate3 = parsedJson['list'][3]['main']['temp'];
+
+    currentHour = parsedJson['list'][0];
+    threeHourUpdate = parsedJson['list'][1];
+    sixHourUpdate = parsedJson['list'][2];
+
     return parsedJson;
   }
 
-  @override
-  List<List<bool>> getFiveDays() {
-    loadData();
+  Future<List<bool>> getFiveDays() async {
+    await loadData();
 
-    print(loadData());
-    // make api call openweather api
-    //parse Json data into usable data
-    //pull out usefull pieces
-    //sunny cloudy rain temperature air quality
-    //create algorithm that checks data and returns true or false
-    //return boolian values in a list.
-    return [
-      [true, false, true],
-      [true, false, false],
-      [true, true, false],
-      [false, true, true],
-      [false, false, false]
-    ];
+    bool firstbool = currentTemp < 60 ? true : false;
+    bool secondbool = tempUpdate2 > 70 ? true : false;
+    bool thirdbool = tempUpdate3 > 70 ? true : false;
+
+    List<bool> daysWeather = [firstbool, secondbool, thirdbool];
+    //print(weatherCheck(threeHourUpdate));
+    return daysWeather;
   }
-  //seperate method for checking data.
 
+  //seperate method for checking data.
 //returns true or false
-  bool weatherCheck(int temperature, String condition, int airquality) {}
+  bool weatherCheck(data) {
+    bool ride = true;
+
+    var time = new DateTime.fromMillisecondsSinceEpoch(data['dt'] * 1000);
+    //print(time);
+    //print(data['weather'][0]['id']);
+    if (data['weather'][0]['id'] < 800) {
+      ride = false;
+    } else if (data['list'][0]['main']['temp'] > 60) {
+      ride = false;
+    } else if (data['weather'][0]['wind'] > 10) {
+      ride = false;
+    }
+    return ride;
+  }
 }
 
-//return jsonDecode(data);
-//double temperature = decodedData['list'][0]['main']['temp'];
-//print(temperature);
+//@JsonSerializable()
+class WeatherDocument {
+  dynamic temperature;
+  dynamic windSpeed;
+  dynamic dateTime;
+  dynamic weatherId;
+  dynamic description;
+
+  WeatherDocument(
+      {this.temperature,
+      this.windSpeed,
+      this.dateTime,
+      this.weatherId,
+      this.description});
+
+  WeatherDocument.fromJson(Map json) {
+    this.temperature = json['main']['temp'];
+    this.dateTime = json['dt'];
+    this.windSpeed = json['wind']['speed'];
+    //this.weatherId = json['weather']['id'];
+    //this.description = json['weather']['description'];
+  }
+}
