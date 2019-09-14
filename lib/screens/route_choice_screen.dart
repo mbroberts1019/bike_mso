@@ -48,14 +48,14 @@ class _RideChoiceScreenState extends State<RideChoiceScreen> {
                       snapshot.data.documents.map((DocumentSnapshot document) {
                     // mapping document to RouteDocument to then pass all key/values to map_screen
                     RouteDocument route = new RouteDocument(
-                      document['description'],
-                      document['directions'],
-                      document['image'],
-                      document['markers'],
-                      document['polyline'],
-                      document['routeName'],
-                      document['shortDescription'],
-                    );
+                        document['description'],
+                        document['directions'],
+                        document['image'],
+                        document['markers'],
+                        document['polyline'],
+                        document['routeName'],
+                        document['shortDescription'],
+                        document['distance']);
 
                     return RouteChoiceContainer(
                       onPressed: () {
@@ -69,8 +69,9 @@ class _RideChoiceScreenState extends State<RideChoiceScreen> {
                         );
                       },
                       bgImageUrl: 'assets/images/' + document['image'],
-                      description: document['description'],
+                      description: document['shortDescription'],
                       routeName: document['routeName'],
+                      distance: document['distance'],
                     );
                   }).toList(),
                 );

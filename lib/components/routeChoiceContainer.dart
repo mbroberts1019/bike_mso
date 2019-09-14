@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 
 class RouteChoiceContainer extends StatelessWidget {
   RouteChoiceContainer(
-      {this.routeName, this.bgImageUrl, this.description, this.onPressed});
+      {this.routeName,
+      this.bgImageUrl,
+      this.description,
+      this.onPressed,
+      this.distance});
 
   final String routeName;
   final String bgImageUrl;
   final String description;
+  final String distance;
   final Function onPressed;
 
   @override
@@ -14,13 +19,13 @@ class RouteChoiceContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
-            color: const Color(0xff7c94b6),
+            color: Color(0xff7c94b6),
             image: DecorationImage(
-              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+              colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken),
               image: ExactAssetImage(bgImageUrl),
               fit: BoxFit.cover,
             ),
@@ -36,7 +41,7 @@ class RouteChoiceContainer extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: EdgeInsets.all(5.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,8 +50,18 @@ class RouteChoiceContainer extends StatelessWidget {
                   routeName,
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900),
                 ),
-                Text(description,
-                    style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic))
+                Text(
+                  description,
+                  style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
+                ),
+                Text(
+                  distance,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w800,
+                  ),
+                  textAlign: TextAlign.right,
+                )
               ],
             ),
           ),

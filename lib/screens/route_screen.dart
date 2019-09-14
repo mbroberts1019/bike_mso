@@ -74,7 +74,7 @@ class _RouteScreenState extends State<RouteScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
@@ -98,7 +98,7 @@ class _RouteScreenState extends State<RouteScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
@@ -134,15 +134,8 @@ class _RouteScreenState extends State<RouteScreen> {
 // class being passed to MapScreen that holds all key/values from database
 
 class RouteDocument {
-  RouteDocument(
-    this.description,
-    this.directions,
-    this.image,
-    this.markers,
-    this.encodedString,
-    this.routeName,
-    this.shortDescription,
-  );
+  RouteDocument(this.description, this.directions, this.image, this.markers,
+      this.encodedString, this.routeName, this.shortDescription, this.distance);
 
   dynamic description;
   dynamic directions;
@@ -151,4 +144,5 @@ class RouteDocument {
   dynamic encodedString;
   dynamic routeName;
   dynamic shortDescription;
+  dynamic distance;
 }
