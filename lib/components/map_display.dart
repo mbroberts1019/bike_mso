@@ -68,7 +68,7 @@ class _MapDisplayState extends State<MapDisplay> {
         util.decodeEncodedPolyline(widget.encodedString);
 
     ListConverter converter = ListConverter(pLineList);
-    print(pLineList);
+    //print(pLineList);
     thisRide = converter.mapCoords();
 
     if (widget.mapCenter != null) {
