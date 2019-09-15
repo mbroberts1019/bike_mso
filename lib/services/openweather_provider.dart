@@ -21,9 +21,10 @@ class OpenWeatherProvider {
   var threeHourUpdate;
   var sixHourUpdate;
 
-  bool firstbool;
-  bool secondbool;
-  bool thirdbool;
+  WeatherDocument weatherDoc1;
+  WeatherDocument weatherDoc2;
+  WeatherDocument weatherDoc3;
+  WeatherDocument weatherDoc4;
 
   Future getData() async {
     http.Response responseData = await http.get(url);
@@ -41,36 +42,20 @@ class OpenWeatherProvider {
     var parsedJson = jsonDecode(data);
     final items = (parsedJson['list'] as List)
         .map((i) => new WeatherDocument.fromJson(i));
-    for (final item in items) {
-      print(item);
+
+    for (var item in items) {
+      print(item.temperature);
+      print(item.weatherId);
+      print(item.dateTime);
     }
 
-//    List<WeatherDocument> weatherDocuments =
-//        parsedJson['list'].map((Map model) => WeatherDocument.fromJson(model));
-
-    //print(weatherDocuments);
-    //print('running');
-
-    currentTemp = parsedJson['list'][0]['main']['temp'];
-    tempUpdate1 = parsedJson['list'][1]['main']['temp'];
-    tempUpdate2 = parsedJson['list'][2]['main']['temp'];
-    tempUpdate3 = parsedJson['list'][3]['main']['temp'];
-
-    currentHour = parsedJson['list'][0];
-    threeHourUpdate = parsedJson['list'][1];
-    sixHourUpdate = parsedJson['list'][2];
-
-    return parsedJson;
+    return items;
   }
 
-  Future<List<bool>> getFiveDays() async {
-    await loadData();
-
-    bool firstbool = currentTemp < 60 ? true : false;
-    bool secondbool = tempUpdate2 > 70 ? true : false;
-    bool thirdbool = tempUpdate3 > 70 ? true : false;
-
-    List<bool> daysWeather = [firstbool, secondbool, thirdbool];
+  Future<List<WeatherDocument>> getFiveDays() async {
+    var weatherList = await loadData();
+    print(weatherList);
+    List<WeatherDocument> daysWeather = weatherList.toList();
     //print(weatherCheck(threeHourUpdate));
     return daysWeather;
   }
@@ -113,7 +98,7 @@ class WeatherDocument {
     this.temperature = json['main']['temp'];
     this.dateTime = json['dt'];
     this.windSpeed = json['wind']['speed'];
-    //this.weatherId = json['weather']['id'];
-    //this.description = json['weather']['description'];
+    this.weatherId = json['weather'][0]['id'];
+    this.description = json['weather'][0]['description'];
   }
 }

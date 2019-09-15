@@ -13,49 +13,7 @@ class WeatherScreenState extends StatefulWidget {
 }
 
 class _WeatherScreenStateState extends State<WeatherScreenState> {
-  Widget buildRow(List<bool> daiyOverView) {
-    String morning;
-    if (daiyOverView[0]) {
-      morning = 'thumb_up';
-    } else {
-      morning = 'thumb_down';
-    }
-
-    String afterNoon;
-    if (daiyOverView[1]) {
-      afterNoon = 'thumb_up';
-    } else {
-      afterNoon = 'thumb_down';
-    }
-
-    String evening;
-    if (daiyOverView[2]) {
-      evening = 'thumb_up';
-    } else {
-      evening = 'thumb_down';
-    }
-
-    return Container(
-      padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          WeatherCard(
-            timeOfDay: morning,
-          ),
-          WeatherCard(
-            timeOfDay: afterNoon,
-          ),
-          WeatherCard(
-            timeOfDay: evening,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Future<List<bool>> getWeather() async {
+  Future<List<WeatherDocument>> getWeather() async {
     return await widget.weather.getFiveDays();
   }
 
@@ -68,13 +26,22 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
       ),
       body: FutureBuilder(
         future: getWeather(),
-        builder: (BuildContext context, AsyncSnapshot<List<bool>> snapshot) {
+        builder: (BuildContext context,
+            AsyncSnapshot<List<WeatherDocument>> snapshot) {
           if (snapshot.hasData) {
-            {
-              return buildRow(snapshot.data);
-            }
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (context, index) {
+                WeatherDocument document = snapshot.data[index];
+                return Column(
+                  children: <Widget>[
+                    WeatherCard(weatherData: document),
+                  ],
+                );
+              },
+            );
           } else {
-            return buildRow([false, false, false]);
+            return Container();
           }
         },
       ),
