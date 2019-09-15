@@ -9,7 +9,7 @@ class WeatherCard extends StatelessWidget {
     this.weatherData,
   }) {
     bool goRide(weatherData) {
-      if (weatherData.temp > 50) {
+      if () {
         return true;
       } else {
         return false;
