@@ -40,7 +40,10 @@ class _RouteScreenState extends State<RouteScreen> {
                     )),
                 height: height * 0.35,
                 child: MapDisplay(
-                    widget.route.encodedString, widget.route.markers),
+                    widget.route.encodedString,
+                    widget.route.markers,
+                    widget.route.mapCenter,
+                    widget.route.mapZoom),
               ),
             ),
             Container(
@@ -134,8 +137,17 @@ class _RouteScreenState extends State<RouteScreen> {
 // class being passed to MapScreen that holds all key/values from database
 
 class RouteDocument {
-  RouteDocument(this.description, this.directions, this.image, this.markers,
-      this.encodedString, this.routeName, this.shortDescription, this.distance);
+  RouteDocument(
+      this.description,
+      this.directions,
+      this.image,
+      this.markers,
+      this.encodedString,
+      this.routeName,
+      this.shortDescription,
+      this.distance,
+      this.mapCenter,
+      this.mapZoom);
 
   dynamic description;
   dynamic directions;
@@ -145,4 +157,6 @@ class RouteDocument {
   dynamic routeName;
   dynamic shortDescription;
   dynamic distance;
+  dynamic mapCenter;
+  dynamic mapZoom;
 }

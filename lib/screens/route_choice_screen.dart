@@ -47,25 +47,31 @@ class _RideChoiceScreenState extends State<RideChoiceScreen> {
                   children:
                       snapshot.data.documents.map((DocumentSnapshot document) {
                     // mapping document to RouteDocument to then pass all key/values to map_screen
+
                     RouteDocument route = new RouteDocument(
-                        document['description'],
-                        document['directions'],
-                        document['image'],
-                        document['markers'],
-                        document['polyline'],
-                        document['routeName'],
-                        document['shortDescription'],
-                        document['distance']);
+                      document['description'],
+                      document['directions'],
+                      document['image'],
+                      document['markers'],
+                      document['polyline'],
+                      document['routeName'],
+                      document['shortDescription'],
+                      document['distance'],
+                      document['mapCenter'],
+                      document['mapZoom'],
+                    );
 
                     return RouteChoiceContainer(
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) {
-                            return RouteScreen(
-                              route,
-                            );
-                          }),
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return RouteScreen(
+                                route,
+                              );
+                            },
+                          ),
                         );
                       },
                       bgImageUrl: 'assets/images/' + document['image'],

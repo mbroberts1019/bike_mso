@@ -9,10 +9,12 @@ NetworkUtil util = NetworkUtil();
 //    "aq`}G~dwvTc@_AAcLQ}FDiBAsAiEa@D?C@ESyBOiAQaHwBkE}ByDyBBYCy@k@aCs@_BoA{ADQQc@oA_Ay@u@u@eAoBeEmAu@WI@@MDIWBYDIAGb@eADWRMBI@a@CG?KLYNKNE\FPXhCqE}@_B{A_CaDaHsBoDwHiM|BsD{C_Fs@_AORqG?eMCaCBsPABwAAgCcTEY`@KZgDvAkAfA_@PK?i@i@]IIIK?e@@[NMPY?QG{@N]GOYGAOZQHa@?ODSWWF_A?Eo@?}HFaToG@cDAkC?uSA{EEkAFsDjBsAHyJ@iICgA~EoCyA_AGq@ZOdA@RuBXU?cAQMO[m@g@k@_AA_BQ]Q]Ei@w@_A{@o@iAo@wAg@[e@m@c@u@g@c@k@a@i@m@a@k@{@eCs@c@w@[uEoAc@FkAc@_FY{@OyBm@o@u@cBmAo@Ss@IoAGoBc@YHa@AuCu@i@a@s@}@_@Ae@PaA?a@G{AgAoA[{AWcCKKAmBpHQZWPWFi@?m@HaAl@");
 
 class MapDisplay extends StatefulWidget {
-  MapDisplay(this.encodedString, this.markers);
+  MapDisplay(this.encodedString, this.markers, this.mapCenter, this.mapZoom);
 
   final dynamic encodedString;
   dynamic markers;
+  dynamic mapCenter;
+  dynamic mapZoom;
 
   @override
   _MapDisplayState createState() => _MapDisplayState();
@@ -22,12 +24,12 @@ class _MapDisplayState extends State<MapDisplay> {
   GoogleMapController mapController;
 
   final Set<Polyline> _polyline = {};
-  final LatLng _center = const LatLng(46.8721, -113.9940);
+  LatLng _center = LatLng(46.8721, -113.9940);
   List<LatLng> thisRide = [];
   Set<Marker> _markers = {};
+  double _mapZoom = 12;
 
   void _onMapCreated(GoogleMapController controller) {
-    print('HIT map created');
     setState(
       () {
         mapController = controller;
@@ -62,14 +64,20 @@ class _MapDisplayState extends State<MapDisplay> {
   @override
   void initState() {
     super.initState();
-    print('HIT decodePolyLogic');
     List<PointLatLng> pLineList =
         util.decodeEncodedPolyline(widget.encodedString);
-    print('Hit decoder run');
 
     ListConverter converter = ListConverter(pLineList);
     print(pLineList);
     thisRide = converter.mapCoords();
+
+    if (widget.mapCenter != null) {
+      _center = LatLng(widget.mapCenter['lat'], widget.mapCenter['long']);
+    }
+
+    if (widget.mapZoom != null) {
+      _mapZoom = widget.mapZoom.toDouble();
+    }
   }
 
   @override
@@ -82,7 +90,7 @@ class _MapDisplayState extends State<MapDisplay> {
           markers: _markers,
           initialCameraPosition: CameraPosition(
             target: _center,
-            zoom: 12.0,
+            zoom: _mapZoom,
           ),
         ),
       ),
