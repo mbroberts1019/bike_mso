@@ -43,18 +43,11 @@ class OpenWeatherProvider {
     final items = (parsedJson['list'] as List)
         .map((i) => new WeatherDocument.fromJson(i));
 
-    for (var item in items) {
-      print(item.temperature);
-      print(item.weatherId);
-      print(item.dateTime);
-    }
-
     return items;
   }
 
   Future<List<WeatherDocument>> getFiveDays() async {
     var weatherList = await loadData();
-    print(weatherList);
     List<WeatherDocument> daysWeather = weatherList.toList();
     //print(weatherCheck(threeHourUpdate));
     return daysWeather;

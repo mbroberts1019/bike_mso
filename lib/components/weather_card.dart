@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bike_mso/services/openweather_provider.dart';
+import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class WeatherCard extends StatelessWidget {
   WeatherCard({
@@ -13,32 +15,59 @@ class WeatherCard extends StatelessWidget {
         return false;
       }
     }
-
-    if (timeOfDay == 'thumbs_up') {
-      pigment = Colors.green;
-      icon = Icon(Icons.thumb_up, color: Colors.black54, size: 40);
-
-      message = Text('Optimal riding weather');
-    } else {
-      pigment = Colors.red;
-      icon = Icon(Icons.thumbs_up_down, color: Colors.black54, size: 40);
-      message = Text('Ride at you discretion');
-    }
   }
 
   String timeOfDay;
   final Function onPress;
   var colorChoice;
-  Icon icon;
-  Color pigment;
+  Color pigment = Colors.black12;
   Text message;
   WeatherDocument weatherData;
+
+  String getWeatherIcon(int condition) {
+    if (condition < 300) {
+      return '🌩';
+    } else if (condition < 400) {
+      return '🌧';
+    } else if (condition < 600) {
+      return '☔️';
+    } else if (condition < 700) {
+      return '☃️';
+    } else if (condition < 800) {
+      return '🌫';
+    } else if (condition == 800) {
+      return '☀️';
+    } else if (condition <= 804) {
+      return '☁️';
+    } else {
+      return '🤷‍';
+    }
+  }
+
+  bool goodTimeToRide(int condition) {
+    return condition >= 800;
+  }
 
   @override
   Widget build(BuildContext context) {
     var time =
-        new DateTime.fromMillisecondsSinceEpoch(weatherData.dateTime * 1000);
+        new DateTime.fromMillisecondsSinceEpoch(weatherData.dateTime * 1000)
+            .toLocal();
+
+    var format = new DateFormat.yMd().add_jm().format(time);
+
+    bool isMidnight(timeStr) {
+      return timeStr.endsWith('12:00 PM');
+    }
+
     var tempF = ((weatherData.temperature - 273.15) * 9 / 5 + 32).round();
+    var windMph = (weatherData.windSpeed * 2.237).round();
+
+    var weatherTxt = TextStyle(
+        fontSize: 24,
+        color: goodTimeToRide(weatherData.weatherId)
+            ? Colors.blueGrey
+            : Colors.indigo);
 
     return GestureDetector(
       onTap: onPress,
@@ -49,18 +78,21 @@ class WeatherCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Container(
-                height: 60,
-                width: 60,
-                child: icon,
-                decoration: BoxDecoration(color: pigment),
+                height: 100,
+                width: 100,
+                child: Center(
+                  child: Text(getWeatherIcon(weatherData.weatherId),
+                      style: TextStyle(fontSize: 80)),
+                ),
+                decoration: BoxDecoration(
+                    color: pigment, borderRadius: BorderRadius.circular(75.00)),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text(time.toString()),
-                  Text(tempF.toString()),
-                  Text(weatherData.weatherId.toString()),
-                  message,
+                  Text(format.toString(), style: weatherTxt),
+                  Text(tempF.toString() + ' ℉', style: weatherTxt),
+                  Text("Wind: $windMph MPH", style: weatherTxt),
                 ],
               ),
             ],
@@ -68,7 +100,9 @@ class WeatherCard extends StatelessWidget {
           height: 150,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(18)),
-            color: Colors.purpleAccent,
+            color: goodTimeToRide(weatherData.weatherId)
+                ? Colors.lightGreenAccent
+                : Colors.deepOrange,
           ),
         ),
       ),
