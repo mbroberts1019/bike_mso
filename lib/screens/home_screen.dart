@@ -1,3 +1,4 @@
+import 'package:bike_mso/screens/weather_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bike_mso/components/homeRouteButton.dart';
 import 'route_choice_screen.dart';
@@ -146,7 +147,13 @@ class _HomeScreenState extends State<HomeScreen>
                           Icons.cloud,
                           size: 50,
                         ),
-                        onPress: () {},
+                        onPress: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WeatherScreenState()),
+                          );
+                        },
                       ),
                     ],
                   ),

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 // When moving these to database you must remove everyother '\' because firestore does not parse escape chars the same
 
 const String kDeerCreekSneakPoly =
