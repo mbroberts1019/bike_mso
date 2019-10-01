@@ -31,6 +31,7 @@ class OpenWeatherProvider {
 
     if (responseData.statusCode == 200) {
       String data = responseData.body;
+      print(data);
       return data;
     } else {
       print(responseData.statusCode);

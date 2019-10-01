@@ -198,26 +198,6 @@ class BikeShopCard extends StatelessWidget {
                 child: Icon(Icons.help_outline, size: 30, color: Colors.black),
               ),
             ),
-//            Positioned(
-//              top: 5,
-//              right: 5,
-//              child: Container(
-//                  decoration: BoxDecoration(
-//                      color: Colors.black54,
-//                      borderRadius: BorderRadius.circular(3.0),
-//                      border: Border.all(
-//                        color: Colors.black,
-//                      )),
-//                  child: Padding(
-//                    padding: EdgeInsets.all(3.0),
-//                    child: Text(shop.distance.toString() + ' mi',
-//                        style: TextStyle(
-//                          color: Colors.white,
-//                          fontWeight: FontWeight.bold,
-//                          fontSize: 16.0,
-//                        )),
-//                  )),
-//            ),
           ],
         ),
       ),

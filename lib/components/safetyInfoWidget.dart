@@ -19,7 +19,7 @@ class SafetyInfoWidget extends StatelessWidget {
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 22.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Merriweather',
               ),
@@ -30,7 +30,7 @@ class SafetyInfoWidget extends StatelessWidget {
             child: Text(
               body,
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.normal,
                 fontFamily: 'Merriweather',
               ),
@@ -45,7 +45,7 @@ class SafetyInfoWidget extends StatelessWidget {
               body,
               softWrap: true,
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.normal,
                 fontFamily: 'Merriweather',
               ),

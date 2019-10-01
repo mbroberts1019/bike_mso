@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:bike_mso/components/map_display.dart';
 import 'package:bike_mso/components/infoWidget.dart';
+import 'package:bike_mso/components/attractionsWidget.dart';
 
 class RouteScreen extends StatefulWidget {
   RouteScreen(this.route);
@@ -70,9 +71,12 @@ class _RouteScreenState extends State<RouteScreen> {
                           width: 8.0,
                         ),
                       ),
-                      child: InfoWidget(
-                        title: 'Description',
-                        body: widget.route.description,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: InfoWidget(
+                          title: 'Description',
+                          body: widget.route.description,
+                        ),
                       ),
                     ),
                   ),
@@ -119,11 +123,12 @@ class _RouteScreenState extends State<RouteScreen> {
                           width: 8.0,
                         ),
                       ),
-                      child: InfoWidget(
-                        title: 'Attractions',
-                        body:
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                      ),
+                      child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: AttractionsWidget(
+                              title: 'Attractions',
+                              body: 'Places to go...',
+                              markers: widget.route.markers)),
                     ),
                   ),
                 ],
@@ -162,3 +167,9 @@ class RouteDocument {
   dynamic mapCenter;
   dynamic mapZoom;
 }
+
+//InfoWidget(
+//                          title: 'Attractions',
+//                          body:
+//                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+//                        ),
